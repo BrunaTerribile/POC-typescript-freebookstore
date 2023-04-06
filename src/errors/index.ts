@@ -1,11 +1,11 @@
-function conflictError(message) {
+function conflictError(message: string) {
   return {
     name: "ConflictError",
     message,
   };
 }
 
-function duplicatedEmailError(email) {
+function duplicatedEmailError(email: string) {
   return {
     name: "DuplicatedEmailError",
     message: "There is already an user with given email",

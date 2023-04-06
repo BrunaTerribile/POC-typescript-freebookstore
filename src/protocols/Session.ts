@@ -1,5 +1,5 @@
 type Session = {
-    id: number,
+    id?: number,
     token: string,
     userId: number
 }

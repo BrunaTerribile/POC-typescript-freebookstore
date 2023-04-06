@@ -22,7 +22,7 @@ async function create({ name, email, password }: UserData) {
   );
 }
 
-async function createSession({ token, userId }) {
+async function createSession({ token, userId }: Session) {
   await connectionDb.query(
     `
       INSERT INTO sessions (token, "userId")
