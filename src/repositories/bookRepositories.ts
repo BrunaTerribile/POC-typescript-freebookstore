@@ -2,7 +2,7 @@ import connectionDb from "../config/database.js";
 import { QueryResult } from "pg";
 import { Book, BookEntity } from "../protocols/Book.js";
 
-async function create({ name, author, userId }: Book) {
+async function create({ name, author, userId }: Book): Promise<void> {
   await connectionDb.query(
     `
         INSERT INTO books (name, author, "userId")
@@ -44,7 +44,7 @@ async function findById(id: number): Promise<QueryResult<BookEntity>> {
   );
 }
 
-async function updateStatusBook(status: boolean, bookId: number) {
+async function updateStatusBook(status: boolean, bookId: number): Promise<void> {
   await connectionDb.query(
     `
       UPDATE books
@@ -55,7 +55,7 @@ async function updateStatusBook(status: boolean, bookId: number) {
   );
 }
 
-async function takeBook(userId: number, bookId: number) {
+async function takeBook(userId: number, bookId: number): Promise<void> {
   await connectionDb.query(
     `
       INSERT INTO "myBooks" ("userId", "bookId")

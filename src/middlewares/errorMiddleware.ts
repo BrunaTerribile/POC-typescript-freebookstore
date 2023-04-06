@@ -1,7 +1,13 @@
 import { HttpStatus } from "http-status-ts";
 import { Request, Response, NextFunction } from "express";
 
-function handleApplicationErrors(err, req: Request, res: Response, next: NextFunction) {
+type Erro = {
+  name: string,
+  message: string,
+  email: string
+}
+
+export function handleApplicationErrors(err: Erro, req: Request, res: Response, next: NextFunction) {
   if (err.name === "ConflictError" || err.name === "DuplicatedEmailError") {
     return res
       .status(HttpStatus.CONFLICT)
@@ -30,8 +36,4 @@ function handleApplicationErrors(err, req: Request, res: Response, next: NextFun
     error: "InternalServerError",
     message: "Internal Server Error",
   });
-}
-
-export default {
-  handleApplicationErrors
 }

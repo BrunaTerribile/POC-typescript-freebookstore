@@ -12,7 +12,7 @@ async function findByEmail(email: string): Promise<QueryResult<UserEntity>> {
   );
 }
 
-async function create({ name, email, password }: UserData) {
+async function create({ name, email, password }: UserData): Promise<void> {
   await connectionDb.query(
     `
       INSERT INTO users (name, email, password)
@@ -22,7 +22,7 @@ async function create({ name, email, password }: UserData) {
   );
 }
 
-async function createSession({ token, userId }: Session) {
+async function createSession({ token, userId }: Session): Promise<void> {
   await connectionDb.query(
     `
       INSERT INTO sessions (token, "userId")
