@@ -1,5 +1,5 @@
 import errors from "../errors/index.js";
-import Book from "../protocols/Book.js";
+import { Book } from "protocols/Book.js";
 import bookRepositories from "../repositories/bookRepositories.js";
 
 async function create({ name, author, userId }: Book) {
@@ -23,7 +23,7 @@ async function takeBook(userId: number, bookId: number) {
     rowCount,
   } = await bookRepositories.findById(bookId);
   if (!rowCount) throw errors.notFoundError();
-  if (!book.available) throw errors.conflictError("Book not available");
+  if (!book.avaiable) throw errors.conflictError("Book not available");
 
   await bookRepositories.updateStatusBook(false, bookId);
   await bookRepositories.takeBook(userId, bookId);
