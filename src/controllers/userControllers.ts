@@ -1,5 +1,5 @@
 import { LoginUser, UserData } from "../protocols/User";
-import userServices from "../services/userServices";
+import userServices from "../services/userServices.js";
 import { Request, Response, NextFunction } from "express";
 
 async function create(req: Request, res: Response, next: NextFunction) {

@@ -1,5 +1,5 @@
 import { Book } from "../protocols/Book";
-import bookServices from "../services/bookServices";
+import bookServices from "../services/bookServices.js";
 import { Request, Response, NextFunction } from "express";
 
 async function create(req: Request, res: Response, next: NextFunction) {

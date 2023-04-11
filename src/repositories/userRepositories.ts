@@ -1,6 +1,6 @@
 import connectionDb from "../config/database.js";
 import Session from "../protocols/Session.js";
-import { UserData, UserEntity } from "../protocols/User";
+import { UserData, UserEntity } from "../protocols/User.js";
 import { QueryResult } from "pg";
 
 async function findByEmail(email: string): Promise<QueryResult<UserEntity>> {

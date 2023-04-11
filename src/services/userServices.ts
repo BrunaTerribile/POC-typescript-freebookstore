@@ -1,8 +1,8 @@
 import { hash, compare } from "bcrypt-ts";
-import userRepositories from "../repositories/userRepositories";
-import { v4 as uuidV4 } from "uuid";
+import userRepositories from "../repositories/userRepositories.js";
+import { v4 as uuidv4 } from "uuid";
 import errors from "../errors/index.js";
-import { LoginUser, UserData } from "../protocols/User";
+import { LoginUser, UserData } from "../protocols/User.js";
 
 async function create({ name, email, password }: UserData) {
   const { rowCount } = await userRepositories.findByEmail(email);
@@ -22,7 +22,7 @@ async function signin({ email, password }: LoginUser) {
   const validPassword = await compare(password, user.password);
   if (!validPassword) throw errors.invalidCredentialsError();
 
-  const token = uuidV4();
+  const token = uuidv4();
   await userRepositories.createSession({ token, userId: user.id });
 
   return token;
